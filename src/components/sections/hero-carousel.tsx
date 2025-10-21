@@ -26,6 +26,7 @@ const loadingGif = "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/p
 export default function HeroCarousel() {
     const [isLoading, setIsLoading] = useState(true);
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -43,11 +44,11 @@ export default function HeroCarousel() {
     }, []);
 
     useEffect(() => {
-      if (!isLoading) {
+      if (!isLoading && !isPaused) {
         const interval = setInterval(nextSlide, 5000);
         return () => clearInterval(interval);
       }
-    }, [isLoading, nextSlide]);
+    }, [isLoading, isPaused, nextSlide]);
 
     if (isLoading) {
         return (
@@ -58,7 +59,11 @@ export default function HeroCarousel() {
     }
 
     return (
-        <section className="relative w-full h-[70vh] lg:h-screen overflow-hidden">
+        <section 
+          className="relative w-full h-[70vh] lg:h-screen overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
             {slides.map((slide, index) => (
                 <div
                     key={index}
@@ -72,19 +77,21 @@ export default function HeroCarousel() {
                         sizes="100vw"
                         style={{ objectFit: 'cover' }}
                         priority={index === 0}
+                        quality={90}
                     />
                     <div className="absolute inset-0 bg-black/60" />
 
                     <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-4">
-                        <h1 className="font-display text-5xl md:text-[72px] font-bold uppercase tracking-[2px] mb-5 animate-fade-in-down">
+                        <h1 className="font-display text-5xl md:text-[72px] font-bold uppercase tracking-[2px] mb-5 animate-fade-in-down will-animate">
                             {slide.title}
                         </h1>
-                        <p className="font-script text-3xl md:text-[42px] mb-10 text-white animate-fade-in-up">
+                        <p className="font-script text-3xl md:text-[42px] mb-10 text-white animate-fade-in-up will-animate" style={{ animationDelay: '0.2s' }}>
                             {slide.subtitle}
                         </p>
                         <a
                             href={slide.ctaLink}
-                            className="bg-primary hover:bg-accent-tertiary text-primary-foreground font-body font-semibold text-[15px] uppercase tracking-[1px] px-10 py-4 rounded-[4px] shadow-[0_4px_12px_rgba(200,117,51,0.3)] transition-all duration-300 hover:transform hover:-translate-y-0.5 hover:shadow-[0_6px_16px_rgba(200,117,51,0.4)] animate-fade-in-up"
+                            className="bg-primary hover:bg-accent-tertiary text-primary-foreground font-body font-semibold text-[15px] uppercase tracking-[1px] px-10 py-4 rounded-[4px] shadow-[0_4px_12px_rgba(200,117,51,0.3)] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(200,117,51,0.5)] animate-fade-in-up will-animate"
+                            style={{ animationDelay: '0.4s' }}
                         >
                             {slide.ctaText}
                         </a>
@@ -94,18 +101,34 @@ export default function HeroCarousel() {
 
             <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-2 md:left-8 -translate-y-1/2 z-30 text-white/70 hover:text-white transition-colors p-2"
+                className="absolute top-1/2 left-2 md:left-8 -translate-y-1/2 z-30 text-white/70 hover:text-white hover:scale-125 transition-all duration-300 p-2 bg-black/20 hover:bg-black/40 rounded-full backdrop-blur-sm"
                 aria-label="Previous slide"
             >
                 <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-2 md:right-8 -translate-y-1/2 z-30 text-white/70 hover:text-white transition-colors p-2"
+                className="absolute top-1/2 right-2 md:right-8 -translate-y-1/2 z-30 text-white/70 hover:text-white hover:scale-125 transition-all duration-300 p-2 bg-black/20 hover:bg-black/40 rounded-full backdrop-blur-sm"
                 aria-label="Next slide"
             >
                 <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
             </button>
+
+            {/* Slide indicators */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+                {slides.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                            index === currentSlide 
+                                ? 'bg-primary w-8' 
+                                : 'bg-white/50 hover:bg-white/80'
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
+            </div>
         </section>
     );
 }
