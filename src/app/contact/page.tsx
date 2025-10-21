@@ -5,6 +5,7 @@ import Footer from '@/components/sections/footer';
 import Image from 'next/image';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { useState } from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,9 @@ export default function ContactPage() {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation({ threshold: 0.2 });
+  const { ref: formRef, isVisible: formVisible } = useScrollAnimation({ threshold: 0.2 });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +38,29 @@ export default function ContactPage() {
     }));
   };
 
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: 'Location',
+      content: 'Multiple outlets across Bangalore, Karnataka'
+    },
+    {
+      icon: Phone,
+      title: 'Phone',
+      content: '+91 80 XXXX XXXX'
+    },
+    {
+      icon: Mail,
+      title: 'Email',
+      content: 'info@therameshwaramcafe.org'
+    },
+    {
+      icon: Clock,
+      title: 'Hours',
+      content: '6:30am - 11:30am\n4pm - 1am'
+    }
+  ];
+
   return (
     <div className="flex min-h-screen">
       <SidebarNavigation />
@@ -51,7 +78,7 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-black/60" />
           <div className="relative z-10 flex items-center justify-center h-full">
-            <h1 className="font-display text-5xl md:text-[72px] font-bold uppercase tracking-[2px] text-white">
+            <h1 className="font-display text-5xl md:text-[72px] font-bold uppercase tracking-[2px] text-white animate-fade-in-down">
               CONTACT US
             </h1>
           </div>
@@ -61,67 +88,45 @@ export default function ContactPage() {
         <section className="bg-background-light py-16 md:py-24">
           <div className="container">
             <div className="max-w-[1200px] mx-auto">
-              <h2 className="font-display text-[2rem] md:text-[3rem] font-bold uppercase tracking-[1px] text-text-secondary text-center mb-16">
+              <h2 className="font-display text-[2rem] md:text-[3rem] font-bold uppercase tracking-[1px] text-text-secondary text-center mb-16 animate-fade-in-up">
                 GET IN TOUCH
               </h2>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-                {/* Location */}
-                <div className="text-center p-6 bg-white rounded-lg shadow-md">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent-primary/10 rounded-full mb-4">
-                    <MapPin className="w-8 h-8 text-accent-primary" />
-                  </div>
-                  <h3 className="font-body text-[1.25rem] font-semibold text-text-heading-accent mb-3">
-                    Location
-                  </h3>
-                  <p className="text-text-tertiary text-[1rem] leading-[1.8]">
-                    Multiple outlets across Bangalore, Karnataka
-                  </p>
-                </div>
-
-                {/* Phone */}
-                <div className="text-center p-6 bg-white rounded-lg shadow-md">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent-primary/10 rounded-full mb-4">
-                    <Phone className="w-8 h-8 text-accent-primary" />
-                  </div>
-                  <h3 className="font-body text-[1.25rem] font-semibold text-text-heading-accent mb-3">
-                    Phone
-                  </h3>
-                  <p className="text-text-tertiary text-[1rem] leading-[1.8]">
-                    +91 80 XXXX XXXX
-                  </p>
-                </div>
-
-                {/* Email */}
-                <div className="text-center p-6 bg-white rounded-lg shadow-md">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent-primary/10 rounded-full mb-4">
-                    <Mail className="w-8 h-8 text-accent-primary" />
-                  </div>
-                  <h3 className="font-body text-[1.25rem] font-semibold text-text-heading-accent mb-3">
-                    Email
-                  </h3>
-                  <p className="text-text-tertiary text-[1rem] leading-[1.8]">
-                    info@therameshwaramcafe.org
-                  </p>
-                </div>
-
-                {/* Hours */}
-                <div className="text-center p-6 bg-white rounded-lg shadow-md">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-accent-primary/10 rounded-full mb-4">
-                    <Clock className="w-8 h-8 text-accent-primary" />
-                  </div>
-                  <h3 className="font-body text-[1.25rem] font-semibold text-text-heading-accent mb-3">
-                    Hours
-                  </h3>
-                  <p className="text-text-tertiary text-[1rem] leading-[1.8]">
-                    6:30am - 11:30am<br />
-                    4pm - 1am
-                  </p>
-                </div>
+              <div 
+                ref={cardsRef}
+                className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+              >
+                {contactInfo.map((info, index) => {
+                  const Icon = info.icon;
+                  return (
+                    <div 
+                      key={info.title}
+                      className={`text-center p-6 bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
+                        cardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                      }`}
+                      style={{ transitionDelay: `${index * 100}ms` }}
+                    >
+                      <div className="inline-flex items-center justify-center w-16 h-16 bg-accent-primary/10 rounded-full mb-4 transition-transform duration-300 hover:scale-110">
+                        <Icon className="w-8 h-8 text-accent-primary" />
+                      </div>
+                      <h3 className="font-body text-[1.25rem] font-semibold text-text-heading-accent mb-3">
+                        {info.title}
+                      </h3>
+                      <p className="text-text-tertiary text-[1rem] leading-[1.8] whitespace-pre-line">
+                        {info.content}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Contact Form */}
-              <div className="max-w-[700px] mx-auto">
+              <div 
+                ref={formRef}
+                className={`max-w-[700px] mx-auto transition-all duration-1000 ${
+                  formVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
                 <h3 className="font-display text-[2rem] font-bold uppercase tracking-[1px] text-text-heading-accent text-center mb-8">
                   Send Us A Message
                 </h3>
@@ -137,7 +142,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary transition-colors"
+                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 transition-all duration-300"
                     />
                   </div>
 
@@ -152,7 +157,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary transition-colors"
+                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 transition-all duration-300"
                     />
                   </div>
 
@@ -166,7 +171,7 @@ export default function ContactPage() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary transition-colors"
+                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 transition-all duration-300"
                     />
                   </div>
 
@@ -181,7 +186,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-border-subtle rounded-[4px] focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20 transition-all duration-300 resize-none"
                     />
                   </div>
 

@@ -1,12 +1,17 @@
+'use client';
+
 import React from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 type ValueItemProps = {
   letter: string;
   text: string;
   colClass: string;
+  delay: number;
+  isVisible: boolean;
 };
 
-const valuesData: Omit<ValueItemProps, 'colClass'>[] = [
+const valuesData: Omit<ValueItemProps, 'colClass' | 'delay' | 'isVisible'>[] = [
   { letter: 'R', text: 'Reliable Brand Experience' },
   { letter: 'A', text: 'Attention To Details' },
   { letter: 'M', text: 'Mindful Work Ethics' },
@@ -21,25 +26,31 @@ const valuesData: Omit<ValueItemProps, 'colClass'>[] = [
 ];
 
 const valueColumnClasses = [
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // R
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // A
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // M
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // E
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // S
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // H
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4", // W
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // A
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // R
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6", // A
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4", // M
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
+    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4",
 ];
 
-
-const ValueItem: React.FC<ValueItemProps> = ({ letter, text, colClass }) => (
-  <div className={`px-4 mb-[30px] ${colClass}`}>
+const ValueItem: React.FC<ValueItemProps> = ({ letter, text, colClass, delay, isVisible }) => (
+  <div 
+    className={`px-4 mb-[30px] ${colClass} transition-all duration-700`}
+    style={{
+      opacity: isVisible ? 1 : 0,
+      transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
+      transitionDelay: `${delay}ms`,
+    }}
+  >
     <div className="text-center text-white">
       <div className="mb-4">
-        <span className="block text-accent-secondary font-bold text-[4rem] leading-none">
+        <span className="block text-accent-secondary font-bold text-[4rem] leading-none transition-transform duration-300 hover:scale-110">
           {letter}
         </span>
       </div>
@@ -53,6 +64,8 @@ const ValueItem: React.FC<ValueItemProps> = ({ letter, text, colClass }) => (
 );
 
 const ValuesSection: React.FC = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
     <section
       className="relative bg-cover bg-center bg-fixed py-[100px] min-h-[600px]"
@@ -61,8 +74,12 @@ const ValuesSection: React.FC = () => {
       }}
     >
       <div className="absolute inset-0 bg-black/70" aria-hidden="true" />
-      <div className="relative z-10 container mx-auto px-15">
-        <div className="text-center mb-20">
+      <div className="relative z-10 container mx-auto px-15" ref={ref}>
+        <div 
+          className={`text-center mb-20 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+          }`}
+        >
           <h3 className="font-display text-white text-[52px] font-semibold">
             Values
           </h3>
@@ -74,6 +91,8 @@ const ValuesSection: React.FC = () => {
               letter={item.letter}
               text={item.text}
               colClass={valueColumnClasses[index]}
+              delay={index * 100}
+              isVisible={isVisible}
             />
           ))}
         </div>
