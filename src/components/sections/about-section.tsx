@@ -1,10 +1,20 @@
+'use client';
+
 import React from 'react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const AboutSection = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
     <section className="bg-[#f5ede5] py-[50px] md:py-20">
       <div className="container">
-        <div className="text-center">
+        <div 
+          ref={ref}
+          className={`text-center transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="font-display font-bold uppercase text-text-secondary text-[2rem] leading-tight tracking-[1px] md:text-[3rem] mb-10">
             ABOUT US
           </h2>
