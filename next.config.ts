@@ -3,16 +3,14 @@ import path from "node:path";
 
 const LOADER = path.resolve(__dirname, 'src/visual-edits/component-tagger-loader.js');
 
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
-      },
-      {
-        protocol: 'http',
-        hostname: '**',
+        hostname: 'slelguoygbfzlpylpxfs.supabase.co',
+        pathname: '/storage/v1/object/public/**',
       },
     ],
     formats: ['image/avif', 'image/webp'],
@@ -20,12 +18,11 @@ const nextConfig: NextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
   },
-  outputFileTracingRoot: path.resolve(__dirname, '../../'),
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
+  compress: true,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
   },
   turbopack: {
     rules: {
@@ -33,13 +30,8 @@ const nextConfig: NextConfig = {
         loaders: [LOADER]
       }
     }
-  },
-  compress: true,
-  poweredByHeader: false,
-  reactStrictMode: true,
-  experimental: {
-    optimizePackageImports: ['lucide-react'],
-  },
+  }
 };
 
 export default nextConfig;
+// Orchids restart: 1761033244411
