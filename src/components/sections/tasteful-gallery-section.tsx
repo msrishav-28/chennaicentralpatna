@@ -27,34 +27,36 @@ const TastefulGallerySection = () => {
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
-    <section className="bg-[#fdf5f0] py-20">
+    <section className="bg-brand-cream py-20 border-y border-brand-green/10">
       <div className="container">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           
           <div 
             ref={titleRef}
-            className={`w-full lg:w-1/2 text-center transition-all duration-1000 ${
+            className={`w-full lg:w-1/2 text-center lg:text-left transition-all duration-1000 ${
               titleVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h2 className="font-script text-accent-secondary text-[2rem] leading-none mb-2">
-              Authentic
-            </h2>
-            <h3 className="font-display font-bold text-text-heading-accent text-[2.5rem] lg:text-[4rem] leading-tight uppercase">
+            <span className="text-brand-gold font-script text-3xl mb-2 block">Authentic & Pure</span>
+            <h3 className="font-display font-bold text-brand-green text-[3rem] lg:text-[4.5rem] leading-none uppercase tracking-tight">
               TASTEFUL
+              <span className="block text-brand-gold text-[2rem] lg:text-[3rem] mt-2">EXPERIENCE</span>
             </h3>
-            <div className="w-20 h-[2px] bg-accent-secondary mx-auto mt-4"></div>
+            <div className="w-24 h-1 bg-brand-gold mt-6 mx-auto lg:mx-0 rounded-full"></div>
+            <p className="mt-8 text-brand-green/70 text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
+              Indulge in a visual journey of our most celebrated dishes, prepared with passion and served with love.
+            </p>
           </div>
 
           <div 
             ref={gridRef}
             className="w-full lg:w-1/2"
           >
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-2 gap-4 md:gap-6">
               {galleryImages.map((image, index) => (
                 <div 
                   key={index} 
-                  className={`overflow-hidden rounded-lg shadow-lg transition-all duration-700 ${
+                  className={`relative group overflow-hidden rounded-2xl shadow-xl transition-all duration-1000 ${
                     gridVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                   }`}
                   style={{
@@ -66,9 +68,14 @@ const TastefulGallerySection = () => {
                     alt={image.alt}
                     width={400}
                     height={400}
-                    className="aspect-square w-full h-full object-cover transform transition-transform duration-500 ease-in-out hover:scale-110"
+                    className="aspect-square w-full h-full object-cover transform transition-transform duration-700 ease-in-out group-hover:scale-110"
                     loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-brand-green/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                    <div className="p-3 bg-brand-white rounded-full text-brand-green transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <span className="font-bold uppercase tracking-wider text-xs">View</span>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
