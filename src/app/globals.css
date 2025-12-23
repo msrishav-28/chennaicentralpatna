@@ -41,17 +41,22 @@
   --color-chart-5: #e74c3c;
 
   /* Custom colors based on design system */
-  --color-background-primary: #1a1a1a;
+  --color-brand-green: #2E5A39;
+  --color-brand-gold: #DAA520;
+  --color-brand-cream: #F5F5DC;
+  --color-brand-white: #FFFFFF;
+
+  --color-background-primary: var(--color-brand-green);
   --color-background-secondary: #2a2a2a;
-  --color-background-light: #f5ede5;
+  --color-background-light: var(--color-brand-cream);
   --color-background-light-alt: #fef5ed;
 
-  --color-accent-primary: #c87533;
-  --color-accent-secondary: #d87939;
+  --color-accent-primary: var(--color-brand-gold);
+  --color-accent-secondary: var(--color-brand-gold);
   --color-accent-tertiary: #b36428;
 
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #333333;
+  --color-text-primary: var(--color-brand-white);
+  --color-text-secondary: var(--color-brand-green);
   --color-text-tertiary: #666666;
   --color-text-heading-accent: #4a4a4a;
 
