@@ -3,52 +3,36 @@ import { Facebook, Twitter, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#1a1a1a] py-[30px] px-10">
-      <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-y-4 md:flex-row">
-        <div className="text-center text-[13px] leading-relaxed text-[#9ca3af] md:text-left">
+    <footer className="bg-brand-green py-[40px] px-10 border-t border-brand-gold/20">
+      <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-y-6 md:flex-row">
+        <div className="text-center text-[14px] leading-relaxed text-brand-white/70 md:text-left">
+          <p className="font-bold text-brand-gold uppercase tracking-widest mb-1">Chennai Central</p>
           <p>
-            Copyright © 2022 The Rameshwaram Cafe. All Rights Reserved
-          </p>
-          <p>
-            Design By{' '}
-            <a
-              href="https://www.petpooja.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#3b82f6] hover:underline"
-            >
-              PETPOOJA
-            </a>
+            Copyright © 2024 Chennai Central. All Rights Reserved
           </p>
         </div>
         
-        <div className="flex items-center gap-x-5">
+        <div className="flex items-center gap-x-6">
           <a
-            href="https://www.facebook.com/therameshwaramcafe/"
+            href="#"
             aria-label="Facebook"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#9ca3af] transition-colors hover:text-[#d97706]"
+            className="text-brand-white/60 transition-all duration-300 hover:text-brand-gold hover:scale-125"
           >
-            <Facebook size={20} />
+            <Facebook size={24} />
           </a>
           <a
-            href="https://mobile.twitter.com/RameshwaramCafe"
+            href="#"
             aria-label="Twitter"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#9ca3af] transition-colors hover:text-[#d97706]"
+            className="text-brand-white/60 transition-all duration-300 hover:text-brand-gold hover:scale-125"
           >
-            <Twitter size={20} />
+            <Twitter size={24} />
           </a>
           <a
-            href="https://instagram.com/therameshwaramcafe?igshid=YmMyMTA2M2Y="
+            href="#"
             aria-label="Instagram"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#9ca3af] transition-colors hover:text-[#d97706]"
+            className="text-brand-white/60 transition-all duration-300 hover:text-brand-gold hover:scale-125"
           >
-            <Instagram size={20} />
+            <Instagram size={24} />
           </a>
         </div>
       </div>
