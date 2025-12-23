@@ -12,36 +12,25 @@ type ValueItemProps = {
 };
 
 const valuesData: Omit<ValueItemProps, 'colClass' | 'delay' | 'isVisible'>[] = [
-  { letter: 'R', text: 'Reliable Brand Experience' },
-  { letter: 'A', text: 'Attention To Details' },
-  { letter: 'M', text: 'Mindful Work Ethics' },
-  { letter: 'E', text: 'Efficient Management System' },
-  { letter: 'S', text: 'Sustainable Practises' },
-  { letter: 'H', text: 'Heart-Warming Meals' },
-  { letter: 'W', text: 'Wholesomeness Added' },
-  { letter: 'A', text: 'Authenticity At Every Step' },
-  { letter: 'R', text: 'Rooted In Our Flavoursv' },
-  { letter: 'A', text: 'Aspiring People Every Day' },
-  { letter: 'M', text: 'Meticulous Techniques' },
+  { letter: 'C', text: 'Culinary Authenticity' },
+  { letter: 'H', text: 'Heritage Recipes' },
+  { letter: 'E', text: 'Exquisite Flavors' },
+  { letter: 'N', text: 'Natural Ingredients' },
+  { letter: 'N', text: 'Nourishing Meals' },
+  { letter: 'A', text: 'Aroma of Tradition' },
+  { letter: 'I', text: 'Indian Hospitality' },
+  { letter: 'C', text: 'Consistent Quality' },
+  { letter: 'E', text: 'Efficient Service' },
+  { letter: 'N', text: 'Native Spices' },
+  { letter: 'T', text: 'Traditional Techniques' },
+  { letter: 'R', text: 'Rooted in Taste' },
+  { letter: 'A', text: 'Affordable Excellence' },
+  { letter: 'L', text: 'Local Favorites' },
 ];
 
-const valueColumnClasses = [
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/6",
-    "w-1/2 sm:w-1/2 md:w-1/4 lg:w-1/4",
-];
-
-const ValueItem: React.FC<ValueItemProps> = ({ letter, text, colClass, delay, isVisible }) => (
+const ValueItem: React.FC<ValueItemProps> = ({ letter, text, delay, isVisible }) => (
   <div 
-    className={`px-4 mb-[30px] ${colClass} transition-all duration-700`}
+    className="px-4 mb-[40px] transition-all duration-700 w-full sm:w-1/2 md:w-1/3 lg:w-[14.28%]"
     style={{
       opacity: isVisible ? 1 : 0,
       transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.95)',
@@ -49,13 +38,13 @@ const ValueItem: React.FC<ValueItemProps> = ({ letter, text, colClass, delay, is
     }}
   >
     <div className="text-center text-white">
-      <div className="mb-4">
-        <span className="block text-accent-secondary font-bold text-[4rem] leading-none transition-transform duration-300 hover:scale-110">
+      <div className="mb-2">
+        <span className="block text-brand-gold font-bold text-[4.5rem] leading-none transition-transform duration-300 hover:scale-110 drop-shadow-md">
           {letter}
         </span>
       </div>
       <div>
-        <h5 className="font-body text-sm font-normal leading-snug text-white">
+        <h5 className="font-body text-[13px] font-semibold leading-tight text-white uppercase tracking-wider">
           {text}
         </h5>
       </div>
@@ -67,31 +56,27 @@ const ValuesSection: React.FC = () => {
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
 
   return (
-    <section
-      className="relative bg-cover bg-center bg-fixed py-[100px] min-h-[600px]"
-      style={{
-        backgroundImage: "url('https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/e3b426fc-3685-4feb-bb4c-9a7a886042b9-therameshwaramcafe-org/assets/images/bg4-9.jpg?')",
-      }}
-    >
-      <div className="absolute inset-0 bg-black/70" aria-hidden="true" />
-      <div className="relative z-10 container mx-auto px-15" ref={ref}>
+    <section className="relative bg-brand-green py-[100px] min-h-[600px] overflow-hidden">
+      <div className="relative z-10 container mx-auto px-4" ref={ref}>
         <div 
-          className={`text-center mb-20 transition-all duration-1000 ${
+          className={`text-center mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
           }`}
         >
-          <h3 className="font-display text-white text-[52px] font-semibold">
+          <span className="text-brand-gold font-script text-3xl mb-2 block">Our Core</span>
+          <h3 className="font-display text-white text-[52px] font-bold uppercase tracking-tight">
             Values
           </h3>
+          <div className="h-1 w-24 bg-brand-gold mx-auto mt-4 rounded-full" />
         </div>
-        <div className="flex flex-wrap -mx-4">
+        <div className="flex flex-wrap justify-center -mx-4">
           {valuesData.map((item, index) => (
             <ValueItem
               key={index}
               letter={item.letter}
               text={item.text}
-              colClass={valueColumnClasses[index]}
-              delay={index * 100}
+              colClass=""
+              delay={index * 50}
               isVisible={isVisible}
             />
           ))}
