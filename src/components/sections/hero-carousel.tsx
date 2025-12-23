@@ -8,14 +8,14 @@ const slides = [
     {
         imageUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/e3b426fc-3685-4feb-bb4c-9a7a886042b9-therameshwaramcafe-org/assets/images/slide1-10.jpg?",
         title: "WELCOME!",
-        subtitle: "The Rameshwaram Cafe",
+        subtitle: "Chennai Central",
         ctaText: "CONTACT US",
         ctaLink: "/contact"
     },
     {
         imageUrl: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/e3b426fc-3685-4feb-bb4c-9a7a886042b9-therameshwaramcafe-org/assets/images/slide2-11.jpg?",
         title: "WELCOME!",
-        subtitle: "The Rameshwaram Cafe",
+        subtitle: "Chennai Central",
         ctaText: "CONTACT US",
         ctaLink: "/contact"
     }
@@ -52,8 +52,11 @@ export default function HeroCarousel() {
 
     if (isLoading) {
         return (
-            <div className="fixed inset-0 flex items-center justify-center bg-[#faf3eb] z-[999999999]">
-                <Image src={loadingGif} alt="Loading..." width={64} height={64} unoptimized />
+            <div className="fixed inset-0 flex items-center justify-center bg-brand-cream z-[999999999]">
+                <div className="flex flex-col items-center">
+                    <Image src={loadingGif} alt="Loading..." width={64} height={64} unoptimized />
+                    <p className="mt-4 font-display text-brand-green font-bold tracking-widest animate-pulse">CHENNAI CENTRAL</p>
+                </div>
             </div>
         );
     }
@@ -72,25 +75,25 @@ export default function HeroCarousel() {
                 >
                     <Image
                         src={slide.imageUrl}
-                        alt="Architectural temple corridor background"
+                        alt="Chennai Central Hero Background"
                         fill
                         sizes="100vw"
                         style={{ objectFit: 'cover' }}
                         priority={index === 0}
                         quality={90}
                     />
-                    <div className="absolute inset-0 bg-black/60" />
+                    <div className="absolute inset-0 bg-brand-green/60" />
 
                     <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-4">
-                        <h1 className="font-display text-5xl md:text-[72px] font-bold uppercase tracking-[2px] mb-5 animate-fade-in-down will-animate">
+                        <h1 className="font-display text-6xl md:text-[100px] font-bold uppercase tracking-[8px] mb-5 animate-fade-in-down drop-shadow-2xl">
                             {slide.title}
                         </h1>
-                        <p className="font-script text-3xl md:text-[42px] mb-10 text-white animate-fade-in-up will-animate" style={{ animationDelay: '0.2s' }}>
+                        <p className="font-script text-4xl md:text-[56px] mb-10 text-brand-gold animate-fade-in-up drop-shadow-lg" style={{ animationDelay: '0.2s' }}>
                             {slide.subtitle}
                         </p>
                         <a
                             href={slide.ctaLink}
-                            className="bg-primary hover:bg-accent-tertiary text-primary-foreground font-body font-semibold text-[15px] uppercase tracking-[1px] px-10 py-4 rounded-[4px] shadow-[0_4px_12px_rgba(200,117,51,0.3)] transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-[0_8px_24px_rgba(200,117,51,0.5)] animate-fade-in-up will-animate"
+                            className="bg-brand-gold hover:bg-white text-brand-green font-body font-bold text-[15px] uppercase tracking-[2px] px-12 py-5 rounded-full shadow-2xl transition-all duration-500 hover:transform hover:-translate-y-2 hover:scale-105 animate-fade-in-up"
                             style={{ animationDelay: '0.4s' }}
                         >
                             {slide.ctaText}
@@ -101,29 +104,29 @@ export default function HeroCarousel() {
 
             <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-2 md:left-8 -translate-y-1/2 z-30 text-white/70 hover:text-white hover:scale-125 transition-all duration-300 p-2 bg-black/20 hover:bg-black/40 rounded-full backdrop-blur-sm"
+                className="absolute top-1/2 left-2 md:left-8 -translate-y-1/2 z-30 text-white/70 hover:text-brand-gold hover:scale-125 transition-all duration-300 p-3 bg-brand-green/20 hover:bg-brand-green/40 rounded-full backdrop-blur-sm border border-white/10"
                 aria-label="Previous slide"
             >
-                <ChevronLeft className="w-8 h-8 md:w-10 md:h-10" />
+                <ChevronLeft className="w-8 h-8 md:w-12 md:h-12" />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-2 md:right-8 -translate-y-1/2 z-30 text-white/70 hover:text-white hover:scale-125 transition-all duration-300 p-2 bg-black/20 hover:bg-black/40 rounded-full backdrop-blur-sm"
+                className="absolute top-1/2 right-2 md:right-8 -translate-y-1/2 z-30 text-white/70 hover:text-brand-gold hover:scale-125 transition-all duration-300 p-3 bg-brand-green/20 hover:bg-brand-green/40 rounded-full backdrop-blur-sm border border-white/10"
                 aria-label="Next slide"
             >
-                <ChevronRight className="w-8 h-8 md:w-10 md:h-10" />
+                <ChevronRight className="w-8 h-8 md:w-12 md:h-12" />
             </button>
 
             {/* Slide indicators */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-3">
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-30 flex gap-4">
                 {slides.map((_, index) => (
                     <button
                         key={index}
                         onClick={() => setCurrentSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        className={`h-1.5 transition-all duration-500 rounded-full ${
                             index === currentSlide 
-                                ? 'bg-primary w-8' 
-                                : 'bg-white/50 hover:bg-white/80'
+                                ? 'bg-brand-gold w-16' 
+                                : 'bg-white/30 w-8 hover:bg-white/60'
                         }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />
