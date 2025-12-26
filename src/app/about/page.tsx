@@ -1,6 +1,7 @@
 'use client';
 
 import SidebarNavigation from '@/components/sections/sidebar-navigation';
+import MobileNavigation from '@/components/sections/mobile-navigation';
 import Footer from '@/components/sections/footer';
 import Image from 'next/image';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -29,15 +30,17 @@ export default function AboutPage() {
     ];
 
     return (
-      <div className="flex min-h-screen">
-        <SidebarNavigation />
+      <>
+        <MobileNavigation />
+        <div className="flex min-h-screen">
+          <SidebarNavigation />
         
-        <main className="w-full">
+        <main id="main-content" className="w-full">
           {/* Hero Section */}
           <section className="relative w-full h-[50vh] lg:h-[60vh] overflow-hidden">
             <Image
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/e3b426fc-3685-4feb-bb4c-9a7a886042b9-therameshwaramcafe-org/assets/images/slide1-10.jpg?"
-              alt="Chennai Central Hero"
+              alt="Chennai Central Restaurant Interior"
               fill
               sizes="100vw"
               style={{ objectFit: 'cover' }}
@@ -45,11 +48,14 @@ export default function AboutPage() {
             />
             <div className="absolute inset-0 bg-brand-green/60" />
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-              <span className="text-brand-gold font-script text-3xl mb-4 animate-fade-in">Discover Our Story</span>
-              <h1 className="font-display text-5xl md:text-[80px] font-bold uppercase tracking-[4px] text-white animate-fade-in-down drop-shadow-2xl">
+              <span className="text-brand-gold font-script text-2xl md:text-3xl mb-6 animate-fade-in">Discover Our Story</span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide text-white animate-fade-in-down drop-shadow-2xl max-w-4xl">
                 ABOUT US
               </h1>
-              <div className="h-1.5 w-32 bg-brand-gold mt-6 rounded-full animate-scale-in" />
+              <div className="h-1.5 w-32 bg-brand-gold mt-8 rounded-full animate-scale-in" />
+              <p className="text-white/90 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+                Learn about our journey, values, and commitment to authentic South Indian cuisine.
+              </p>
             </div>
           </section>
   
@@ -61,18 +67,21 @@ export default function AboutPage() {
                 className="max-w-[1000px] mx-auto"
               >
                 <div className="text-center mb-16">
-                  <span className="text-brand-gold font-script text-3xl mb-2 block">Tradition Meets Excellence</span>
-                  <h2 className={`font-display text-[2.5rem] md:text-[3.5rem] font-bold uppercase tracking-[2px] text-brand-green mb-6 transition-all duration-1000 ${
+                  <span className="text-brand-gold font-script text-2xl md:text-3xl mb-3 block">Tradition Meets Excellence</span>
+                  <h2 className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wide text-brand-green mb-6 transition-all duration-1000 ${
                     storyVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}>
                     OUR STORY
                   </h2>
                   <div className="h-1 w-24 bg-brand-gold mx-auto rounded-full" />
+                  <p className="text-brand-green/80 text-lg md:text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+                    From humble beginnings to becoming a beloved culinary destination, discover the passion and dedication behind Chennai Central.
+                  </p>
                 </div>
                 
-                <div className="space-y-8 text-brand-green/80 text-[1.15rem] leading-[2] text-center md:text-left">
+                <div className="space-y-8 text-brand-green/80 text-lg md:text-xl leading-relaxed text-center md:text-left max-w-4xl mx-auto">
                   {[
-                    "Chennai Central is a premium South Indian culinary destination dedicated to bringing the authentic flavors of tradition to your plate. We ensure that all our cuisines are prepared with fresh, high-quality ingredients and heritage recipes that have been passed down through generations. At Chennai Central, we combine the efficiency of modern service with the soul of traditional Indian hospitality.",
+                    "Chennai Central is a premium South Indian culinary destination dedicated to bringing the authentic flavors of tradition to your plate. We ensure that all our cuisines are prepared with fresh, high-quality ingredients and heritage recipes that have been passed down through generations.",
                     "Our journey began with a simple mission: to bring authentic South Indian flavors to food lovers everywhere. We take pride in our traditional cooking methods, passed down through generations, combined with modern kitchen practices to ensure consistency and quality.",
                     "Every dish at Chennai Central tells a story of heritage, passion, and dedication. From our signature filter coffee to our crispy dosas and fluffy idlis, we strive to deliver an unforgettable culinary experience that transports you to the heart of South India."
                   ].map((text, index) => (
@@ -104,16 +113,19 @@ export default function AboutPage() {
             
             <div className="relative z-10 container">
               <div className="text-center mb-20">
-                <span className="text-brand-gold font-script text-3xl mb-2 block">The Pillars of</span>
+                <span className="text-brand-gold font-script text-2xl md:text-3xl mb-3 block">The Pillars of</span>
                 <h2 
                   ref={valuesHeaderRef}
-                  className={`font-display text-[3rem] md:text-[4.5rem] font-bold uppercase tracking-widest text-white transition-all duration-1000 ${
+                  className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wide text-white transition-all duration-1000 mb-4 ${
                     valuesHeaderVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
                   }`}
                 >
                   Chennai Central
                 </h2>
-                <div className="h-1.5 w-40 bg-brand-gold mx-auto mt-6 rounded-full" />
+                <div className="h-1.5 w-40 bg-brand-gold mx-auto rounded-full" />
+                <p className="text-white/90 text-lg md:text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+                  Each letter of our name represents a core value that defines our commitment to excellence and authenticity.
+                </p>
               </div>
               
               <div 
@@ -128,10 +140,10 @@ export default function AboutPage() {
                     }`}
                     style={{ transitionDelay: `${index * 50}ms` }}
                   >
-                    <div className="text-[4rem] md:text-[5rem] font-bold text-brand-gold leading-none mb-4 transition-all duration-500 group-hover:scale-110 drop-shadow-lg">
+                    <div className="text-4xl md:text-5xl font-bold text-brand-gold leading-none mb-4 transition-all duration-500 group-hover:scale-110 drop-shadow-lg">
                       {value.letter}
                     </div>
-                    <p className="text-[12px] md:text-[13px] font-bold uppercase tracking-wider text-white px-2">
+                    <p className="text-sm md:text-base font-semibold uppercase tracking-wide text-white px-2 leading-tight">
                       {value.text}
                     </p>
                   </div>
@@ -155,10 +167,10 @@ export default function AboutPage() {
                   <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center mb-8 mx-auto md:mx-0">
                     <div className="w-8 h-8 bg-brand-gold rounded-full" />
                   </div>
-                  <h3 className="font-display text-[2.2rem] font-bold uppercase tracking-[1px] text-brand-green mb-6 text-center md:text-left">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold uppercase tracking-wide text-brand-green mb-6 text-center md:text-left">
                     Our Mission
                   </h3>
-                  <p className="text-brand-green/70 text-[1.1rem] leading-[1.8] text-center md:text-left">
+                  <p className="text-brand-green/70 text-lg md:text-xl leading-relaxed text-center md:text-left">
                     To serve authentic South Indian cuisine prepared with the finest ingredients and traditional recipes, ensuring every customer enjoys a memorable dining experience that celebrates our rich cultural heritage.
                   </p>
                 </div>
@@ -171,10 +183,10 @@ export default function AboutPage() {
                   <div className="w-16 h-16 bg-brand-green/10 rounded-2xl flex items-center justify-center mb-8 mx-auto md:mx-0">
                     <div className="w-8 h-8 bg-brand-green rounded-full" />
                   </div>
-                  <h3 className="font-display text-[2.2rem] font-bold uppercase tracking-[1px] text-brand-green mb-6 text-center md:text-left">
+                  <h3 className="font-display text-2xl md:text-3xl font-bold uppercase tracking-wide text-brand-green mb-6 text-center md:text-left">
                     Our Vision
                   </h3>
-                  <p className="text-brand-green/70 text-[1.1rem] leading-[1.8] text-center md:text-left">
+                  <p className="text-brand-green/70 text-lg md:text-xl leading-relaxed text-center md:text-left">
                     To become the most trusted and beloved South Indian culinary destination, known for uncompromising quality, authentic flavors, and exceptional hospitality, while expanding our presence across communities.
                   </p>
                 </div>
@@ -185,5 +197,6 @@ export default function AboutPage() {
         <Footer />
       </main>
     </div>
+    </>
   );
 }

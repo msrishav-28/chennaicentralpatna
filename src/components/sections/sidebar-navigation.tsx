@@ -35,7 +35,7 @@ const SidebarNavigation = () => {
               />
             </div>
           </Link>
-          <div className="mt-6 font-display uppercase text-brand-gold tracking-[2.5px] text-[24px] font-bold leading-tight">
+          <div className="mt-6 font-display uppercase text-brand-gold tracking-[2px] text-xl md:text-2xl font-bold leading-tight">
             <p>CHENNAI</p>
             <p>CENTRAL</p>
           </div>
@@ -55,11 +55,12 @@ const SidebarNavigation = () => {
                 >
                   <Link
                     href={item.href}
-                    className={`block py-[15px] px-4 rounded-lg uppercase tracking-[1.5px] text-[13px] font-bold transition-all duration-300 transform ${
+                    className={`block py-4 px-5 rounded-lg uppercase tracking-wide text-sm font-bold transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-brand-gold ${
                       isActive 
                         ? 'bg-brand-gold text-brand-green shadow-lg scale-105 translate-x-2' 
                         : 'text-white hover:bg-brand-gold hover:text-brand-green hover:translate-x-2'
                     }`}
+                    aria-current={isActive ? 'page' : undefined}
                   >
                     {item.name}
                   </Link>
@@ -74,28 +75,28 @@ const SidebarNavigation = () => {
           <div className="flex justify-center gap-6 my-8">
             <a 
               href="#" 
-              aria-label="Facebook"
-              className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
+              aria-label="Follow us on Facebook"
+              className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-brand-gold rounded-full p-1"
             >
-                <Facebook className="size-5 text-white hover:text-brand-gold transition-colors" />
+                <Facebook className="size-6 text-white hover:text-brand-gold transition-colors" />
               </a>
               <a 
                 href="#" 
-                aria-label="Twitter"
-                className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
+                aria-label="Follow us on Twitter"
+                className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-brand-gold rounded-full p-1"
               >
-                <Twitter className="size-5 text-white hover:text-brand-gold transition-colors" />
+                <Twitter className="size-6 text-white hover:text-brand-gold transition-colors" />
               </a>
               <a 
                 href="#" 
-                aria-label="Instagram"
-                className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
+                aria-label="Follow us on Instagram"
+                className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-brand-gold rounded-full p-1"
               >
-                <Instagram className="size-5 text-white hover:text-brand-gold transition-colors" />
+                <Instagram className="size-6 text-white hover:text-brand-gold transition-colors" />
             </a>
           </div>
             <div className="space-y-2">
-            <p className="font-body text-[11px] uppercase tracking-wider">
+            <p className="font-body text-sm uppercase tracking-wider text-brand-white/90 leading-relaxed">
               Copyright © 2024 Chennai Central <br />
               All Rights Reserved
             </p>

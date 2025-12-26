@@ -210,38 +210,154 @@
     --radius: 0.5rem;
   }
 
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
     font-family: var(--font-body);
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-size: clamp(16px, 2.5vw, 18px); /* Better mobile scaling */
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     color: var(--color-text-primary);
+    line-height: 1.2; /* Tighter for mobile */
+    margin-bottom: 0.75em;
+    font-weight: 700;
+    text-wrap: balance; /* Better text wrapping */
+  }
+
+  h1 {
+    font-size: clamp(2rem, 6vw, 4rem); /* Better mobile scaling */
+    letter-spacing: clamp(0.01em, 0.5vw, 0.02em);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    letter-spacing: clamp(0.005em, 0.3vw, 0.01em);
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+  }
+
+  h4 {
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+  }
+
+  h5 {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  }
+
+  h6 {
+    font-size: clamp(1rem, 2vw, 1.25rem);
   }
 
   p {
-    font-size: 16px;
+    font-size: clamp(0.9rem, 2vw, 1.125rem);
     font-weight: 400;
-    line-height: 1.8;
+    line-height: 1.7;
     color: var(--color-text-tertiary);
+    margin-bottom: 1.25em;
+    max-width: 75ch;
+    text-wrap: pretty; /* Better text wrapping */
   }
 
+  /* Improved text contrast and readability */
+  .text-readable {
+    color: #2a2a2a;
+    font-size: clamp(0.9rem, 2vw, 1.125rem);
+    line-height: 1.7;
+    max-width: 70ch;
+  }
+
+  .text-readable-light {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Focus styles for accessibility */
+  *:focus {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-accent);
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .skip-link:focus {
+    top: 6px;
+  }
+
+  /* Enhanced container with better mobile spacing */
   .container {
-    max-width: 1200px;
+    max-width: 1400px; /* Increased for larger screens */
     margin-left: auto;
     margin-right: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: clamp(16px, 4vw, 24px);
+    padding-right: clamp(16px, 4vw, 24px);
+  }
+  
+  @media (min-width: 640px) {
+    .container {
+      padding-left: clamp(24px, 5vw, 40px);
+      padding-right: clamp(24px, 5vw, 40px);
+    }
   }
   
   @media (min-width: 768px) {
     .container {
-      padding-left: 60px;
-      padding-right: 60px;
+      padding-left: clamp(40px, 6vw, 60px);
+      padding-right: clamp(40px, 6vw, 60px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: clamp(60px, 7vw, 80px);
+      padding-right: clamp(60px, 7vw, 80px);
+    }
+  }
+
+  /* Better mobile touch targets */
+  button, 
+  a[role="button"],
+  input[type="submit"],
+  input[type="button"] {
+    min-height: 44px; /* iOS recommended touch target */
+    min-width: 44px;
+  }
+
+  /* Improved mobile navigation */
+  @media (max-width: 1023px) {
+    .mobile-nav-hidden {
+      transform: translateX(-100%);
+    }
+    
+    .mobile-nav-visible {
+      transform: translateX(0);
     }
   }
 }
@@ -291,6 +407,38 @@
 
   .transition-smooth {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Additional readability utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .text-readable {
+      color: #000000;
+      font-weight: 600;
+    }
+    
+    .text-readable-light {
+      color: #ffffff;
+      font-weight: 600;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 

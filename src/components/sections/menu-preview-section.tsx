@@ -18,11 +18,14 @@ const MenuPreviewSection = () => {
             titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <span className="text-brand-gold font-script text-3xl mb-2 block">Taste of Tradition</span>
-          <h2 className="font-display text-[48px] font-bold uppercase tracking-[1px] text-brand-green">
+          <span className="text-brand-gold font-script text-2xl md:text-3xl mb-3 block">Taste of Tradition</span>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wide text-brand-green mb-4">
             OUR MENU
           </h2>
-          <div className="h-1 w-24 bg-brand-gold mx-auto mt-2 rounded-full" />
+          <div className="h-1 w-24 bg-brand-gold mx-auto rounded-full" />
+          <p className="text-brand-green/80 text-lg md:text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+            Discover our carefully curated selection of authentic South Indian dishes, prepared with traditional recipes and the finest ingredients.
+          </p>
         </div>
         <div className="mt-16">
           <div 
@@ -52,7 +55,8 @@ const MenuPreviewSection = () => {
         >
           <Link
             href="/our-menu"
-            className="inline-block rounded-full bg-brand-green px-10 py-4 text-[15px] font-bold uppercase tracking-[1px] text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-brand-gold hover:text-brand-green shadow-xl hover:shadow-2xl"
+            className="inline-block rounded-full bg-brand-green px-8 md:px-12 py-4 md:py-5 text-sm md:text-base font-bold uppercase tracking-wide text-white transition-all duration-300 ease-in-out hover:scale-105 hover:bg-brand-gold hover:text-brand-green shadow-xl hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-brand-gold/50"
+            aria-label="View our complete menu - Navigate to menu page"
           >
             VIEW OUR COMPLETE MENU
           </Link>

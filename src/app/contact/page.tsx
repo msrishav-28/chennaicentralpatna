@@ -1,6 +1,7 @@
 'use client';
 
 import SidebarNavigation from '@/components/sections/sidebar-navigation';
+import MobileNavigation from '@/components/sections/mobile-navigation';
 import Footer from '@/components/sections/footer';
 import Image from 'next/image';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
@@ -62,10 +63,12 @@ export default function ContactPage() {
     ];
   
     return (
-      <div className="flex min-h-screen">
-        <SidebarNavigation />
+      <>
+        <MobileNavigation />
+        <div className="flex min-h-screen">
+          <SidebarNavigation />
         
-        <main className="w-full">
+        <main id="main-content" className="w-full">
           {/* Hero Section */}
           <section className="relative w-full h-[50vh] lg:h-[60vh] overflow-hidden">
             <Image
@@ -78,11 +81,14 @@ export default function ContactPage() {
             />
             <div className="absolute inset-0 bg-brand-green/60" />
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-              <span className="text-brand-gold font-script text-3xl mb-4 animate-fade-in">We'd Love to Hear from You</span>
-              <h1 className="font-display text-5xl md:text-[80px] font-bold uppercase tracking-[4px] text-white animate-fade-in-down drop-shadow-2xl">
+              <span className="text-brand-gold font-script text-2xl md:text-3xl mb-6 animate-fade-in">We'd Love to Hear from You</span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-wide text-white animate-fade-in-down drop-shadow-2xl max-w-4xl">
                 CONTACT US
               </h1>
-              <div className="h-1.5 w-32 bg-brand-gold mt-6 rounded-full animate-scale-in" />
+              <div className="h-1.5 w-32 bg-brand-gold mt-8 rounded-full animate-scale-in" />
+              <p className="text-white/90 text-lg md:text-xl mt-6 max-w-2xl leading-relaxed">
+                Get in touch with us for reservations, inquiries, or just to share your dining experience.
+              </p>
             </div>
           </section>
   
@@ -91,11 +97,14 @@ export default function ContactPage() {
             <div className="container">
               <div className="max-w-[1200px] mx-auto">
                 <div className="text-center mb-20">
-                  <span className="text-brand-gold font-script text-3xl mb-2 block">Connect With Us</span>
-                  <h2 className="font-display text-[2.5rem] md:text-[3.5rem] font-bold uppercase tracking-[2px] text-brand-green mb-6">
+                  <span className="text-brand-gold font-script text-2xl md:text-3xl mb-3 block">Connect With Us</span>
+                  <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wide text-brand-green mb-6">
                     GET IN TOUCH
                   </h2>
                   <div className="h-1 w-24 bg-brand-gold mx-auto rounded-full" />
+                  <p className="text-brand-green/80 text-lg md:text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+                    We're here to help with any questions, reservations, or feedback you may have. Reach out to us through any of the channels below.
+                  </p>
                 </div>
   
                 <div 
@@ -115,10 +124,10 @@ export default function ContactPage() {
                         <div className="inline-flex items-center justify-center w-20 h-20 bg-brand-green/5 rounded-2xl mb-6 transition-all duration-500 group-hover:bg-brand-green group-hover:rotate-12">
                           <Icon className="w-10 h-10 text-brand-green group-hover:text-brand-gold transition-colors duration-500" />
                         </div>
-                        <h3 className="font-display text-[1.5rem] font-bold text-brand-green mb-4">
+                        <h3 className="font-display text-xl md:text-2xl font-bold text-brand-green mb-4">
                           {info.title}
                         </h3>
-                        <p className="text-brand-green/70 text-[1rem] leading-[1.8] whitespace-pre-line font-medium">
+                        <p className="text-brand-green/70 text-base md:text-lg leading-relaxed whitespace-pre-line font-medium">
                           {info.content}
                         </p>
                       </div>
@@ -134,17 +143,20 @@ export default function ContactPage() {
                   }`}
                 >
                   <div className="text-center mb-12">
-                    <h3 className="font-display text-[2.5rem] font-bold uppercase tracking-[1px] text-brand-green mb-4">
+                    <h3 className="font-display text-2xl md:text-3xl font-bold uppercase tracking-wide text-brand-green mb-4">
                       Send Us A Message
                     </h3>
                     <div className="h-1 w-20 bg-brand-gold mx-auto rounded-full" />
+                    <p className="text-brand-green/70 text-base md:text-lg mt-6 leading-relaxed max-w-2xl mx-auto">
+                      Fill out the form below and we'll get back to you as soon as possible. We value your feedback and inquiries.
+                    </p>
                   </div>
                   
                   <form onSubmit={handleSubmit} className="space-y-8">
                     <div className="grid md:grid-cols-2 gap-8">
                       <div className="space-y-3">
-                        <label htmlFor="name" className="block text-brand-green font-bold uppercase text-xs tracking-widest ml-1">
-                          Name *
+                        <label htmlFor="name" className="block text-brand-green font-bold uppercase text-sm tracking-wide ml-1 mb-2">
+                          Full Name *
                         </label>
                         <input
                           type="text"
@@ -153,14 +165,14 @@ export default function ContactPage() {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          placeholder="Your Name"
-                          className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 font-medium"
+                          placeholder="Enter your full name"
+                          className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 font-medium text-base"
                         />
                       </div>
   
                       <div className="space-y-3">
-                        <label htmlFor="email" className="block text-brand-green font-bold uppercase text-xs tracking-widest ml-1">
-                          Email *
+                        <label htmlFor="email" className="block text-brand-green font-bold uppercase text-sm tracking-wide ml-1 mb-2">
+                          Email Address *
                         </label>
                         <input
                           type="email"
@@ -169,15 +181,15 @@ export default function ContactPage() {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          placeholder="your@email.com"
-                          className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 font-medium"
+                          placeholder="Enter your email address"
+                          className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 font-medium text-base"
                         />
                       </div>
                     </div>
   
                     <div className="space-y-3">
-                      <label htmlFor="phone" className="block text-brand-green font-bold uppercase text-xs tracking-widest ml-1">
-                        Phone
+                      <label htmlFor="phone" className="block text-brand-green font-bold uppercase text-sm tracking-wide ml-1 mb-2">
+                        Phone Number (Optional)
                       </label>
                       <input
                         type="tel"
@@ -185,14 +197,14 @@ export default function ContactPage() {
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="Your Phone Number"
-                        className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 font-medium"
+                        placeholder="Enter your phone number"
+                        className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 font-medium text-base"
                       />
                     </div>
   
                     <div className="space-y-3">
-                      <label htmlFor="message" className="block text-brand-green font-bold uppercase text-xs tracking-widest ml-1">
-                        Message *
+                      <label htmlFor="message" className="block text-brand-green font-bold uppercase text-sm tracking-wide ml-1 mb-2">
+                        Your Message *
                       </label>
                       <textarea
                         id="message"
@@ -201,8 +213,8 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         rows={6}
-                        placeholder="How can we help you?"
-                        className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 resize-none font-medium"
+                        placeholder="Tell us how we can help you..."
+                        className="w-full px-6 py-4 bg-brand-cream/30 border border-brand-green/10 rounded-2xl focus:outline-none focus:border-brand-gold focus:ring-4 focus:ring-brand-gold/10 transition-all duration-300 resize-none font-medium text-base"
                       />
                     </div>
   
@@ -210,9 +222,10 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="inline-block rounded-full bg-brand-green hover:bg-brand-gold text-brand-white hover:text-brand-green px-16 py-5 text-[16px] font-bold uppercase tracking-[2px] transition-all duration-500 ease-in-out hover:scale-105 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="inline-block rounded-full bg-brand-green hover:bg-brand-gold text-brand-white hover:text-brand-green px-12 md:px-20 py-4 md:py-6 text-base md:text-lg font-bold uppercase tracking-wide transition-all duration-500 ease-in-out hover:scale-105 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-brand-gold/50"
+                        aria-label={isSubmitting ? 'Sending your message...' : 'Send your message to Chennai Central'}
                       >
-                        {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
+                        {isSubmitting ? 'SENDING MESSAGE...' : 'SEND MESSAGE'}
                       </button>
                     </div>
                   </form>
@@ -224,5 +237,6 @@ export default function ContactPage() {
         <Footer />
       </main>
     </div>
+    </>
   );
 }

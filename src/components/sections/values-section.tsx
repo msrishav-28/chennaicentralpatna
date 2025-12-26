@@ -38,13 +38,13 @@ const ValueItem: React.FC<ValueItemProps> = ({ letter, text, delay, isVisible })
     }}
   >
     <div className="text-center text-white">
-      <div className="mb-2">
-        <span className="block text-brand-gold font-bold text-[4.5rem] leading-none transition-transform duration-300 hover:scale-110 drop-shadow-md">
+      <div className="mb-4">
+        <span className="block text-brand-gold font-bold text-5xl md:text-6xl leading-none transition-transform duration-300 hover:scale-110 drop-shadow-md">
           {letter}
         </span>
       </div>
       <div>
-        <h5 className="font-body text-[13px] font-semibold leading-tight text-white uppercase tracking-wider">
+        <h5 className="font-body text-sm md:text-base font-semibold leading-tight text-white uppercase tracking-wider">
           {text}
         </h5>
       </div>
@@ -63,11 +63,14 @@ const ValuesSection: React.FC = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
           }`}
         >
-          <span className="text-brand-gold font-script text-3xl mb-2 block">Our Core</span>
-          <h3 className="font-display text-white text-[52px] font-bold uppercase tracking-tight">
+          <span className="text-brand-gold font-script text-2xl md:text-3xl mb-3 block">Our Core</span>
+          <h3 className="font-display text-white text-3xl md:text-4xl lg:text-5xl font-bold uppercase tracking-wide mb-4">
             Values
           </h3>
-          <div className="h-1 w-24 bg-brand-gold mx-auto mt-4 rounded-full" />
+          <div className="h-1 w-24 bg-brand-gold mx-auto rounded-full" />
+          <p className="text-white/90 text-lg md:text-xl mt-6 max-w-3xl mx-auto leading-relaxed">
+            Each letter of Chennai Central represents our commitment to authentic South Indian cuisine and exceptional hospitality.
+          </p>
         </div>
         <div className="flex flex-wrap justify-center -mx-4">
           {valuesData.map((item, index) => (

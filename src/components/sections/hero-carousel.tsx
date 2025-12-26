@@ -85,16 +85,17 @@ export default function HeroCarousel() {
                     <div className="absolute inset-0 bg-brand-green/60" />
 
                     <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white p-4">
-                        <h1 className="font-display text-6xl md:text-[100px] font-bold uppercase tracking-[8px] mb-5 animate-fade-in-down drop-shadow-2xl">
+                        <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-[4px] mb-6 animate-fade-in-down drop-shadow-2xl max-w-4xl">
                             {slide.title}
                         </h1>
-                        <p className="font-script text-4xl md:text-[56px] mb-10 text-brand-gold animate-fade-in-up drop-shadow-lg" style={{ animationDelay: '0.2s' }}>
+                        <p className="font-script text-2xl md:text-4xl lg:text-5xl mb-12 text-brand-gold animate-fade-in-up drop-shadow-lg max-w-3xl" style={{ animationDelay: '0.2s' }}>
                             {slide.subtitle}
                         </p>
                         <a
                             href={slide.ctaLink}
-                            className="bg-brand-gold hover:bg-white text-brand-green font-body font-bold text-[15px] uppercase tracking-[2px] px-12 py-5 rounded-full shadow-2xl transition-all duration-500 hover:transform hover:-translate-y-2 hover:scale-105 animate-fade-in-up"
+                            className="bg-brand-gold hover:bg-white text-brand-green font-body font-bold text-sm md:text-base uppercase tracking-[2px] px-8 md:px-12 py-4 md:py-5 rounded-full shadow-2xl transition-all duration-500 hover:transform hover:-translate-y-2 hover:scale-105 animate-fade-in-up focus:outline-none focus:ring-4 focus:ring-white/50"
                             style={{ animationDelay: '0.4s' }}
+                            aria-label={`${slide.ctaText} - Navigate to contact page`}
                         >
                             {slide.ctaText}
                         </a>

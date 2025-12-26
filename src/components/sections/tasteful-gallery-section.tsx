@@ -37,14 +37,14 @@ const TastefulGallerySection = () => {
               titleVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <span className="text-brand-gold font-script text-3xl mb-2 block">Authentic & Pure</span>
-            <h3 className="font-display font-bold text-brand-green text-[3rem] lg:text-[4.5rem] leading-none uppercase tracking-tight">
+            <span className="text-brand-gold font-script text-2xl md:text-3xl mb-3 block">Authentic & Pure</span>
+            <h3 className="font-display font-bold text-brand-green text-3xl md:text-4xl lg:text-5xl leading-tight uppercase tracking-wide mb-4">
               TASTEFUL
-              <span className="block text-brand-gold text-[2rem] lg:text-[3rem] mt-2">EXPERIENCE</span>
+              <span className="block text-brand-gold text-2xl md:text-3xl lg:text-4xl mt-2">EXPERIENCE</span>
             </h3>
             <div className="w-24 h-1 bg-brand-gold mt-6 mx-auto lg:mx-0 rounded-full"></div>
-              <p className="mt-8 text-brand-green text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
-              Indulge in a visual journey of our most celebrated dishes, prepared with passion and served with love.
+            <p className="mt-8 text-brand-green text-lg md:text-xl leading-relaxed max-w-lg mx-auto lg:mx-0">
+              Indulge in a visual journey of our most celebrated dishes, prepared with passion and served with love. Each dish tells a story of tradition, flavor, and culinary excellence.
             </p>
           </div>
 
