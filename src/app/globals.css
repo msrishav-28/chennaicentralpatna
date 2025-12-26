@@ -16,16 +16,16 @@
   --color-popover: #1a1a1a;
   --color-popover-foreground: #ffffff;
 
-  --color-primary: #c87533; /* Primary Accent */
+  --color-primary: #2E5A39; /* Forest Green */
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: #2a2a2a; /* Secondary Background */
-  --color-secondary-foreground: #ffffff;
+  --color-secondary: #F5F5DC; /* Cream */
+  --color-secondary-foreground: #2E5A39;
 
-  --color-muted: #666666; /* Text Tertiary */
-  --color-muted-foreground: #ffffff;
+  --color-muted: #FFFFFF; /* Changed from grey to white */
+  --color-muted-foreground: #2E5A39;
 
-  --color-accent: #d87939; /* Secondary Accent */
+  --color-accent: #DAA520; /* Turmeric Gold */
   --color-accent-foreground: #ffffff;
 
   --color-destructive: #ef4444;
@@ -33,7 +33,7 @@
 
   --color-border: #e0e0e0; /* Border/Divider */
   --color-input: #2a2a2a;
-  --color-ring: #c87533;
+  --color-ring: #DAA520;
 
   --color-chart-1: #e67e22;
   --color-chart-2: #2d8659;
@@ -48,7 +48,7 @@
   --color-brand-white: #FFFFFF;
 
   --color-background-primary: var(--color-brand-green);
-  --color-background-secondary: #2a2a2a;
+  --color-background-secondary: #F5F5DC;
   --color-background-light: var(--color-brand-cream);
   --color-background-light-alt: #fef5ed;
 
@@ -58,8 +58,8 @@
 
   --color-text-primary: var(--color-brand-white);
   --color-text-secondary: var(--color-brand-green);
-  --color-text-tertiary: #666666;
-  --color-text-heading-accent: #4a4a4a;
+  --color-text-tertiary: var(--color-brand-white); /* Changed from grey to white */
+  --color-text-heading-accent: #DAA520;
 
   --color-border-subtle: #e0e0e0;
   --color-overlay-dark: #00000099; /* rgba(0,0,0,0.6) */
