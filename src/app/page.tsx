@@ -11,7 +11,7 @@ export default function Home() {
     <div className="flex min-h-screen">
       <SidebarNavigation />
       
-      <main className="w-full lg:ml-[300px]">
+      <main className="w-full">
         <HeroCarousel />
         <AboutSection />
         <ValuesSection />

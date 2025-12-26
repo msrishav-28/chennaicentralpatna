@@ -16,7 +16,11 @@ const SidebarNavigation = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="hidden lg:flex flex-col w-[300px] h-screen fixed top-0 left-0 bg-brand-green text-white z-40 shadow-[4px_0_15px_rgba(0,0,0,0.2)]">
+    <div className="group fixed left-0 top-0 h-full z-50">
+      {/* Trigger area for hover */}
+      <div className="hidden lg:block w-4 h-full absolute left-0 top-0 z-50" />
+      
+      <aside className="hidden lg:flex flex-col w-[300px] h-screen bg-brand-green text-white shadow-[4px_0_15px_rgba(0,0,0,0.2)] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out">
       <div className="flex flex-col h-full text-center px-[30px] pt-[40px] pb-[30px]">
         {/* Logo Section */}
         <div className="mb-14 animate-fade-in-down">
@@ -98,7 +102,8 @@ const SidebarNavigation = () => {
           </div>
         </div>
       </div>
-    </aside>
+      </aside>
+    </div>
   );
 };
 
