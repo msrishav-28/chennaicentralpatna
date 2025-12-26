@@ -65,7 +65,7 @@ export default function ContactPage() {
       <div className="flex min-h-screen">
         <SidebarNavigation />
         
-        <main className="w-full lg:ml-[300px]">
+        <main className="w-full">
           {/* Hero Section */}
           <section className="relative w-full h-[50vh] lg:h-[60vh] overflow-hidden">
             <Image
