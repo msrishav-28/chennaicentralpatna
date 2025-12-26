@@ -126,7 +126,7 @@ export default function HeroCarousel() {
                         className={`h-1.5 transition-all duration-500 rounded-full ${
                             index === currentSlide 
                                 ? 'bg-brand-gold w-16' 
-                                : 'bg-white/50 w-8 hover:bg-white/80'
+                                : 'bg-white w-8 hover:bg-brand-gold/50'
                         }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />

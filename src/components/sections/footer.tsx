@@ -12,29 +12,29 @@ const Footer: React.FC = () => {
           </p>
         </div>
         
-        <div className="flex items-center gap-x-6">
+          <div className="flex items-center gap-x-6">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="text-brand-white transition-all duration-300 hover:text-brand-gold hover:scale-125"
+              >
+              <Facebook size={24} />
+            </a>
             <a
               href="#"
-              aria-label="Facebook"
+              aria-label="Twitter"
               className="text-brand-white transition-all duration-300 hover:text-brand-gold hover:scale-125"
             >
-            <Facebook size={24} />
-          </a>
-          <a
-            href="#"
-            aria-label="Twitter"
-            className="text-brand-white/60 transition-all duration-300 hover:text-brand-gold hover:scale-125"
-          >
-            <Twitter size={24} />
-          </a>
-          <a
-            href="#"
-            aria-label="Instagram"
-            className="text-brand-white/60 transition-all duration-300 hover:text-brand-gold hover:scale-125"
-          >
-            <Instagram size={24} />
-          </a>
-        </div>
+              <Twitter size={24} />
+            </a>
+            <a
+              href="#"
+              aria-label="Instagram"
+              className="text-brand-white transition-all duration-300 hover:text-brand-gold hover:scale-125"
+            >
+              <Instagram size={24} />
+            </a>
+          </div>
       </div>
     </footer>
   );
