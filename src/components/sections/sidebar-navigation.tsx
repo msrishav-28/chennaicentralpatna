@@ -73,24 +73,24 @@ const SidebarNavigation = () => {
               aria-label="Facebook"
               className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
             >
-              <Facebook className="size-5 text-white/60 hover:text-brand-gold transition-colors" />
-            </a>
-            <a 
-              href="#" 
-              aria-label="Twitter"
-              className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
-            >
-              <Twitter className="size-5 text-white/60 hover:text-brand-gold transition-colors" />
-            </a>
-            <a 
-              href="#" 
-              aria-label="Instagram"
-              className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
-            >
-              <Instagram className="size-5 text-white/60 hover:text-brand-gold transition-colors" />
+                <Facebook className="size-5 text-white hover:text-brand-gold transition-colors" />
+              </a>
+              <a 
+                href="#" 
+                aria-label="Twitter"
+                className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
+              >
+                <Twitter className="size-5 text-white hover:text-brand-gold transition-colors" />
+              </a>
+              <a 
+                href="#" 
+                aria-label="Instagram"
+                className="transform transition-all duration-300 hover:scale-125 hover:-translate-y-1"
+              >
+                <Instagram className="size-5 text-white hover:text-brand-gold transition-colors" />
             </a>
           </div>
-          <div className="space-y-2 opacity-60">
+            <div className="space-y-2">
             <p className="font-body text-[11px] uppercase tracking-wider">
               Copyright © 2024 Chennai Central <br />
               All Rights Reserved

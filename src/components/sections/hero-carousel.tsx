@@ -104,14 +104,14 @@ export default function HeroCarousel() {
 
             <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-2 md:left-8 -translate-y-1/2 z-30 text-white/70 hover:text-brand-gold hover:scale-125 transition-all duration-300 p-3 bg-brand-green/20 hover:bg-brand-green/40 rounded-full backdrop-blur-sm border border-white/10"
+                className="absolute top-1/2 left-2 md:left-8 -translate-y-1/2 z-30 text-white hover:text-brand-gold hover:scale-125 transition-all duration-300 p-3 bg-brand-green/40 hover:bg-brand-green/60 rounded-full backdrop-blur-sm border border-white/20"
                 aria-label="Previous slide"
             >
                 <ChevronLeft className="w-8 h-8 md:w-12 md:h-12" />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-2 md:right-8 -translate-y-1/2 z-30 text-white/70 hover:text-brand-gold hover:scale-125 transition-all duration-300 p-3 bg-brand-green/20 hover:bg-brand-green/40 rounded-full backdrop-blur-sm border border-white/10"
+                className="absolute top-1/2 right-2 md:right-8 -translate-y-1/2 z-30 text-white hover:text-brand-gold hover:scale-125 transition-all duration-300 p-3 bg-brand-green/40 hover:bg-brand-green/60 rounded-full backdrop-blur-sm border border-white/20"
                 aria-label="Next slide"
             >
                 <ChevronRight className="w-8 h-8 md:w-12 md:h-12" />
@@ -126,7 +126,7 @@ export default function HeroCarousel() {
                         className={`h-1.5 transition-all duration-500 rounded-full ${
                             index === currentSlide 
                                 ? 'bg-brand-gold w-16' 
-                                : 'bg-white/30 w-8 hover:bg-white/60'
+                                : 'bg-white/50 w-8 hover:bg-white/80'
                         }`}
                         aria-label={`Go to slide ${index + 1}`}
                     />

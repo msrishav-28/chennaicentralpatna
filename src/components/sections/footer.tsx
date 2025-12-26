@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-brand-green py-[40px] px-10 border-t border-brand-gold/20">
       <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-between gap-y-6 md:flex-row">
-        <div className="text-center text-[14px] leading-relaxed text-brand-white/70 md:text-left">
+        <div className="text-center text-[14px] leading-relaxed text-brand-white md:text-left">
           <p className="font-bold text-brand-gold uppercase tracking-widest mb-1">Chennai Central</p>
           <p>
             Copyright © 2024 Chennai Central. All Rights Reserved
@@ -13,11 +13,11 @@ const Footer: React.FC = () => {
         </div>
         
         <div className="flex items-center gap-x-6">
-          <a
-            href="#"
-            aria-label="Facebook"
-            className="text-brand-white/60 transition-all duration-300 hover:text-brand-gold hover:scale-125"
-          >
+            <a
+              href="#"
+              aria-label="Facebook"
+              className="text-brand-white transition-all duration-300 hover:text-brand-gold hover:scale-125"
+            >
             <Facebook size={24} />
           </a>
           <a

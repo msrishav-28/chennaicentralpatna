@@ -43,7 +43,7 @@ const TastefulGallerySection = () => {
               <span className="block text-brand-gold text-[2rem] lg:text-[3rem] mt-2">EXPERIENCE</span>
             </h3>
             <div className="w-24 h-1 bg-brand-gold mt-6 mx-auto lg:mx-0 rounded-full"></div>
-            <p className="mt-8 text-brand-green/70 text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
+              <p className="mt-8 text-brand-green text-lg leading-relaxed max-w-md mx-auto lg:mx-0">
               Indulge in a visual journey of our most celebrated dishes, prepared with passion and served with love.
             </p>
           </div>

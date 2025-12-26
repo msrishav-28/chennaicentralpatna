@@ -20,7 +20,7 @@ const AboutSection = () => {
             ABOUT US
           </h2>
           <div className="h-1 w-24 bg-brand-gold mx-auto -mt-6 mb-10 rounded-full" />
-          <p className="max-w-[900px] mx-auto font-body text-brand-green/80 text-[1.1rem] leading-[1.8]">
+            <p className="max-w-[900px] mx-auto font-body text-brand-green text-[1.1rem] leading-[1.8]">
             Chennai Central is a premium South Indian culinary destination dedicated to bringing the authentic flavors of tradition to your plate. We ensure that all our cuisines are prepared with fresh, high-quality ingredients and heritage recipes that have been passed down through generations. At Chennai Central, we combine the efficiency of modern service with the soul of traditional Indian hospitality.
           </p>
         </div>
